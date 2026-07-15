@@ -15,6 +15,7 @@ rules/
   index.html   The rulebook, formatted for screen and A4 print
 design/
   README.md    Designer-only notes: parked ideas + playtest questions
+serve.sh       Serve the rulebook locally and open it in Chrome to view / print
 ```
 
 ## The rulebook
@@ -25,6 +26,22 @@ manual and is set up to print cleanly on **A4** — the page margins stay inside
 the non-printable edge that most home printers leave, so nothing gets clipped.
 To print, use your browser's Print dialog (choose A4; the cube colours are set
 to print without needing "Background graphics").
+
+## Viewing & printing
+
+The quickest way to view and print it (Linux or macOS):
+
+```
+./serve.sh
+```
+
+This serves the repo with `python3 -m http.server` and opens
+`http://localhost:8000/rules/index.html` in Chrome (falling back to your default
+browser). Then print with **Cmd/Ctrl-P → A4**. Press Ctrl-C to stop the server.
+Use `PORT=8080 ./serve.sh` if port 8000 is in use.
+
+If you use Claude Code in this repo, the `/preview-rulebook` skill
+(`.claude/skills/preview-rulebook/`) does the same thing on request.
 
 ## Editing the rules
 

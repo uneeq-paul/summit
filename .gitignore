@@ -2,5 +2,5 @@ node_modules/
 .DS_Store
 *.log
 
-# Local tooling
-.claude/
+# Local tooling (keep .claude/skills/ tracked so the preview skill is shared)
+.claude/settings.local.json
