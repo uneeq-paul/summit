@@ -5,11 +5,10 @@
 `rules/index.html` carries a **semantic version**, shown in the footer colophon:
 
 ```html
-<span class="version">v0.0.5</span>
+<span class="version">v1.0.0</span>
 ```
 
-That span is the **single source of truth** for the version (0.0.5 when this
-convention was added).
+That span is the **single source of truth** for the version (currently v1.0.0).
 
 **Whenever you change the rulebook, bump the version in that span before you
 commit** — and mention the new version in the commit message. Choose the bump by
