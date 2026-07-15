@@ -388,16 +388,15 @@
       <caption>Class roster at a glance</caption>
       <thead><tr><th>Class</th><th class="c">Stamina</th><th>Identity in one line</th></tr></thead>
       <tbody>
-        <tr><td class="cls-name">The Agile</td><td class="c stat">20</td><td>The pure climber and scout — nimble, high stamina, ranges ahead.</td></tr>
         <tr><td class="cls-name">The Climber</td><td class="c stat">18</td><td>The baseline — no special effects. Every other class is measured against it.</td></tr>
+        <tr><td class="cls-name">The Agile</td><td class="c stat">20</td><td>The pure climber and scout — nimble, high stamina, ranges ahead.</td></tr>
         <tr><td class="cls-name">The Healer</td><td class="c stat">16</td><td>Removes damage from any player, including itself.</td></tr>
-        <tr><td class="cls-name">The Cook</td><td class="c stat">16</td><td>Doubles the hunger removed from food fed to a teammate.</td></tr>
-        <tr><td class="cls-name">The Strong</td><td class="c stat">16</td><td>The gear mule — carries items and fallen teammates cheaply.</td></tr>
+        <tr><td class="cls-name">The Cook</td><td class="c stat">16</td><td>Doubles the hunger removed from any food it cooks — its own or a teammate's.</td></tr>
+        <tr><td class="cls-name">The Porter</td><td class="c stat">16</td><td>The gear mule — carries items and fallen teammates cheaply.</td></tr>
         <tr><td class="cls-name">The Gambler</td><td class="c stat">14</td><td>High variance — doubles the climb roll, but falls twice as hard.</td></tr>
         <tr><td class="cls-name">The Android</td><td class="c stat">14</td><td>A tireless machine — immune to hunger and damage, but never rolls.</td></tr>
       </tbody>
     </table>
-    <p class="note">The Climber (18) is the baseline. Specialist classes have a little less stamina, which pays for their special ability; the Agile has more, but carries gear at double weight.</p>
 
     <div class="class-block">
       <h3>The Climber <span class="s">18 stamina · baseline</span></h3>
@@ -413,11 +412,11 @@
     </div>
     <div class="class-block">
       <h3>The Cook <span class="s">16 stamina</span></h3>
-      <p>Once per turn, the Cook may feed a food card to a <strong>teammate on the same hex</strong> and double its hunger removal (an apple removes 4 instead of 2). The double applies only to food given to others, not the Cook's own eating — so the Cook must stay close to the group to shine.</p>
+      <p>Once per turn, the Cook may cook a food card and <strong>double its hunger removal</strong> (an apple removes 4 instead of 2). This works on the Cook's own food, or on food fed to a <strong>teammate on the same hex</strong>.</p>
     </div>
     <div class="class-block">
-      <h3>The Strong <span class="s">16 stamina</span></h3>
-      <p>Powerful but tires fast. <strong>Items weigh half</strong> (rounded down) for the Strong, making it the team's gear mule. It also <strong>carries fallen teammates cheaply</strong> and <strong>keeps a rope after using it</strong> instead of losing it. Its lower stamina is the price of all that strength.</p>
+      <h3>The Porter <span class="s">16 stamina</span></h3>
+      <p>Powerful but tires fast. <strong>Items weigh half</strong> (rounded down) for the Porter, making it the team's gear mule. It also <strong>carries fallen teammates cheaply</strong> and <strong>keeps a rope after using it</strong> instead of losing it. Its lower stamina is the price of all that strength.</p>
     </div>
     <div class="class-block">
       <h3>The Gambler <span class="s">14 stamina</span></h3>
@@ -427,7 +426,7 @@
       <h3>The Android <span class="s">14 stamina</span></h3>
       <p>The Android is a machine, so it <strong>never gets hungry and never takes damage</strong> — it never holds <span class="tok cube-yellow"></span> yellow or <span class="tok cube-red"></span> red cubes, and it <strong>cannot be healed</strong>. In exchange, it <strong>never rolls the die on climbs</strong>: it climbs on stamina + buddy bonus + tools only. This caps its climb total at 20 even with full team support, so it can never gamble its way up a hard pitch alone.</p>
       <ul class="ticks">
-        <li><strong>Carrying.</strong> The Android carries fallen teammates at half cost (like the Strong). It does <em>not</em> get the Strong's half-weight discount on items — keeping the two distinct (Android hauls people; Strong hauls gear).</li>
+        <li><strong>Carrying.</strong> The Android carries fallen teammates at half cost (like the Porter). It does <em>not</em> get the Porter's half-weight discount on items — keeping the two distinct (Android hauls people; Porter hauls gear).</li>
         <li><strong>Hard-mode fragility.</strong> The Android still gets cold. If it ever reaches <strong>6 blue cubes it freezes permanently</strong> and is out of the game. It can only remove blue via teammates or a wool blanket — so it must not be abandoned in the cold.</li>
       </ul>
     </div>
@@ -481,7 +480,7 @@
   <section>
     <div class="sec-head"><span class="sec-num">8</span><h2 class="sec-title">Passing Out &amp; Carrying</h2></div>
     <p><strong>Passing out:</strong> if a player reaches 0 stamina (no green cubes), they pass out and cannot act.</p>
-    <p><strong>Carrying:</strong> another player may carry a passed-out teammate. The carrier takes <strong>12 <span class="tok cube-brown"></span> brown (weight) cubes</strong> — the Strong and Android take only 6 — swapping that much of their own green stamina away for as long as they carry. This works like a very heavy item: carrying a teammate makes your own climbs much harder. When you set them down, return the brown cubes for green.</p>
+    <p><strong>Carrying:</strong> another player may carry a passed-out teammate. The carrier takes <strong>12 <span class="tok cube-brown"></span> brown (weight) cubes</strong> — the Porter and Android take only 6 —swapping that much of their own green stamina away for as long as they carry. This works like a very heavy item: carrying a teammate makes your own climbs much harder. When you set them down, return the brown cubes for green.</p>
   </section>
 
   <!-- 9 ITEMS -->
@@ -494,7 +493,7 @@
       <li><strong>Trading.</strong> While on the same hex as a teammate, you may hand items to each other freely.</li>
     </ul>
     <h3>Weight</h3>
-    <p>Items with a weight cost you stamina to carry. When you pick up an item, take <span class="tok cube-brown"></span> brown cubes equal to its weight in exchange for green. Weight is modified by class: <strong>doubled</strong> for the Agile, <strong>halved and rounded down</strong> for the Strong. Weight returns to green when you discard or give away the item.</p>
+    <p>Items with a weight cost you stamina to carry. When you pick up an item, take <span class="tok cube-brown"></span> brown cubes equal to its weight in exchange for green. Weight is modified by class: <strong>doubled</strong> for the Agile, <strong>halved and rounded down</strong> for the Porter. Weight returns to green when you discard or give away the item.</p>
 
     <table>
       <caption>Food — removes hunger (single use, then discard)</caption>
@@ -512,7 +511,7 @@
       <caption>Tools &amp; gear</caption>
       <thead><tr><th>Item</th><th class="c">Weight</th><th>Effect</th><th class="c">In deck</th></tr></thead>
       <tbody>
-        <tr><td class="cls-name">Rope</td><td class="c">2</td><td>A player higher up lets all players below climb free of stamina. Used up afterward (the Strong keeps it instead).</td><td class="c">2</td></tr>
+        <tr><td class="cls-name">Rope</td><td class="c">2</td><td>A player higher up lets all players below climb free of stamina. Used up afterward (the Porter keeps it instead).</td><td class="c">2</td></tr>
         <tr><td class="cls-name">Rope Gun</td><td class="c">3</td><td>Everyone on your hex picks one target hex and gets +12 stamina for that climb. Consumed after use.</td><td class="c">2</td></tr>
         <tr><td class="cls-name">Mushroom Shelf</td><td class="c">2</td><td>When used to move hex-to-hex, all players get double stamina for that climb. Consumed that turn.</td><td class="c">2</td></tr>
         <tr><td class="cls-name">Chalk Bag</td><td class="c">0</td><td>Re-roll one failed climb die. Single use, then discard.</td><td class="c">4</td></tr>
