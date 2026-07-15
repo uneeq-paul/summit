@@ -4,7 +4,7 @@ A cooperative climbing board game. A team of climbers ascends a mountain built f
 
 - **Players:** 2–6, fully cooperative
 - **Ages:** 8+
-- **Length:** about 45–60 minutes
+- **Length:** about 45–90 minutes
 
 ## This repository is the source of truth
 
