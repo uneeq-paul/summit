@@ -2,7 +2,7 @@
 
 A cooperative climbing board game. A team of climbers ascends a mountain built from hex tiles, revealed one step at a time. The whole game runs on a fixed pool of coloured cubes per player: green is stamina, and everything that goes wrong (hunger, damage, poison, weight, cold) swaps green out for another colour, crowding out the strength you need to climb. Reach the summit together — or lose together.
 
-- **Players:** 2–4, fully cooperative
+- **Players:** 2–6, fully cooperative
 - **Ages:** 8+
 - **Length:** about 45–60 minutes
 

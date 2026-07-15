@@ -6,10 +6,10 @@
 cover and in the footer colophon — each in a `.version` span:
 
 ```html
-<span class="version">v1.0.0</span>
+<span class="version">v1.0.1</span>
 ```
 
-Those spans are the version (currently v1.0.0). **Keep them in sync** — both
+Those spans are the version (currently v1.0.1). **Keep them in sync** — both
 must always show the same value.
 
 **Whenever you change the rulebook, bump the version in every `.version` span
