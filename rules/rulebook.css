@@ -98,6 +98,15 @@ img,svg{max-width:100%;height:auto;}
 }
 .meta span{padding:9px 18px;color:var(--pine-deep);}
 .meta span + span{border-left:1px solid var(--line);}
+.cover-version{
+  margin:14px 0 0;
+  font-family:"Archivo Narrow",sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:12px;
+  color:var(--rock);
+}
 
 /* ---------- SECTION SYSTEM ---------- */
 section{margin:0 0 34px;}
