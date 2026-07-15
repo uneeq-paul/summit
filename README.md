@@ -12,11 +12,9 @@ All game files live here. When something changes, it changes here first.
 
 ```
 rules/
-  index.html                  The rulebook, formatted for screen and A4 print
+  index.html   The rulebook, formatted for screen and A4 print
 design/
-  Summit_Design_Notes.docx    Designer-only notes: parked ideas + playtest questions
-source/
-  build_design_notes.js       Script that generates the .docx design notes
+  README.md    Designer-only notes: parked ideas + playtest questions
 ```
 
 ## The rulebook
@@ -30,18 +28,12 @@ to print without needing "Background graphics").
 
 ## Editing the rules
 
-The rulebook in `rules/index.html` is edited directly. The design-notes `.docx`
-is generated from its script in `source/` (it uses the `docx` Node package):
-
-```
-cd source
-npm install docx
-node build_design_notes.js
-```
+Both files are edited directly — no build step. Edit the rulebook in
+`rules/index.html`, and the design notes in `design/README.md`.
 
 ## Status
 
 The rules are a complete, playable first version. Class stamina values, the
 summit distance, card counts, and a few other numbers are settled for now but
 expected to shift once the game is played — those open questions are tracked in
-`design/Summit_Design_Notes.docx`, not in the player-facing rules.
+`design/README.md`, not in the player-facing rules.
