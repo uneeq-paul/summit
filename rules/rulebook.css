@@ -1,0 +1,334 @@
+/* Summit rulebook — presentation & layout.
+   The rules content lives in index.html; all styling (screen, print, mobile) is here. */
+
+:root{
+  --ink:#1b2a24;          /* deep pine text */
+  --pine:#20493b;         /* headers */
+  --pine-deep:#153229;
+  --moss:#5a7a5c;
+  --stone:#6b6157;        /* muted brown-grey */
+  --rock:#8a6a3b;         /* trail brown accent */
+  --snow:#f7f5ef;         /* page */
+  --snow-panel:#efeadd;   /* panels */
+  --line:#cdc6b5;
+  --line-soft:#e0d9c8;
+
+  /* cube colours — the game's core system */
+  --c-green:#3f8f5b;
+  --c-yellow:#d6a627;
+  --c-red:#b6402e;
+  --c-purple:#7a4ea3;
+  --c-brown:#8a6a3b;
+  --c-blue:#3a6ea5;
+
+  --maxw:820px;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #ffffff 0%, var(--snow) 55%) fixed,
+    var(--snow);
+  color:var(--ink);
+  font-family:"Archivo",system-ui,sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;height:auto;}
+
+.sheet{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:48px 40px 80px;
+}
+
+/* ---------- COVER ---------- */
+.cover{
+  text-align:center;
+  padding:64px 0 40px;
+  border-bottom:2px solid var(--pine);
+  margin-bottom:40px;
+  position:relative;
+}
+.peak-mark{
+  width:96px;height:96px;margin:0 auto 20px;display:block;
+}
+.title{
+  font-family:"Fraunces",serif;
+  font-weight:900;
+  font-size:76px;
+  letter-spacing:.06em;
+  line-height:.9;
+  color:var(--pine);
+  margin:0;
+  text-indent:.06em;
+}
+.subtitle{
+  font-family:"Archivo Narrow",sans-serif;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.42em;
+  font-size:14px;
+  color:var(--rock);
+  margin:18px 0 0;
+  text-indent:.42em;
+}
+.tagline{
+  font-family:"Fraunces",serif;
+  font-style:italic;
+  font-size:19px;
+  color:var(--stone);
+  margin:14px 0 0;
+}
+.meta{
+  margin:26px auto 0;
+  display:inline-flex;
+  gap:0;
+  border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+  font-family:"Archivo Narrow",sans-serif;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.meta span{padding:9px 18px;color:var(--pine-deep);}
+.meta span + span{border-left:1px solid var(--line);}
+
+/* ---------- SECTION SYSTEM ---------- */
+section{margin:0 0 34px;}
+.sec-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  border-bottom:1.5px solid var(--pine);
+  padding-bottom:7px;
+  margin:0 0 16px;
+}
+.sec-num{
+  font-family:"Fraunces",serif;
+  font-weight:900;
+  font-size:22px;
+  color:var(--rock);
+  min-width:1.4em;
+  line-height:1;
+}
+h2.sec-title{
+  font-family:"Fraunces",serif;
+  font-weight:600;
+  font-size:25px;
+  color:var(--pine);
+  margin:0;
+  line-height:1.1;
+}
+h3{
+  font-family:"Archivo Narrow",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-weight:700;
+  font-size:14px;
+  color:var(--rock);
+  margin:22px 0 8px;
+}
+p{margin:0 0 12px;}
+strong{color:var(--pine-deep);font-weight:700;}
+.lead{font-size:16px;}
+
+/* callout: the single most important rule */
+.keystone{
+  background:var(--pine);
+  color:#f3efe4;
+  border-radius:4px;
+  padding:20px 24px;
+  margin:16px 0;
+}
+.keystone h3{color:#e7c98a;margin-top:0;}
+.keystone strong{color:#fff;}
+.keystone p:last-child{margin-bottom:0;}
+
+/* ---------- CUBE KEY (signature element) ---------- */
+.cube-key{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px 22px;
+  margin:14px 0 4px;
+}
+.cube-row{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:8px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.cube{
+  flex:0 0 auto;
+  width:22px;height:22px;
+  border-radius:4px;
+  margin-top:2px;
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.18), inset 0 2px 0 rgba(255,255,255,.28);
+}
+.cube-green{background:var(--c-green);}
+.cube-yellow{background:var(--c-yellow);}
+.cube-red{background:var(--c-red);}
+.cube-purple{background:var(--c-purple);}
+.cube-brown{background:var(--c-brown);}
+.cube-blue{background:var(--c-blue);}
+.cube-label{font-weight:700;color:var(--pine-deep);}
+.cube-row small{display:block;color:var(--stone);font-weight:400;line-height:1.45;}
+
+/* inline coloured cube token */
+.tok{
+  display:inline-block;width:11px;height:11px;border-radius:2px;
+  vertical-align:baseline;margin:0 1px;
+  box-shadow:inset 0 -2px 0 rgba(0,0,0,.18);
+}
+
+/* ---------- LISTS ---------- */
+ol.steps{margin:0 0 12px;padding:0;counter-reset:step;list-style:none;}
+ol.steps li{
+  position:relative;padding:0 0 10px 40px;margin:0;
+}
+ol.steps li::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;left:0;top:-1px;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--snow-panel);border:1.5px solid var(--pine);
+  color:var(--pine);font-family:"Fraunces",serif;font-weight:600;
+  font-size:14px;display:flex;align-items:center;justify-content:center;
+}
+ul.ticks{margin:0 0 12px;padding:0;list-style:none;}
+ul.ticks li{position:relative;padding:0 0 8px 22px;}
+ul.ticks li::before{
+  content:"";position:absolute;left:2px;top:9px;
+  width:7px;height:7px;background:var(--rock);
+  transform:rotate(45deg);
+}
+
+/* ---------- TABLES ---------- */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 14px;}
+table{
+  width:100%;border-collapse:collapse;
+  font-size:13.5px;
+}
+caption{
+  text-align:left;font-family:"Archivo Narrow",sans-serif;
+  font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+  font-size:12.5px;color:var(--rock);padding-bottom:6px;
+}
+thead th{
+  background:var(--pine);color:#f3efe4;
+  font-family:"Archivo Narrow",sans-serif;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;font-size:12px;
+  text-align:left;padding:8px 10px;
+}
+tbody td{padding:8px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
+td.c,th.c{text-align:center;}
+.cls-name{font-weight:700;color:var(--pine-deep);white-space:nowrap;}
+.stat{font-family:"Fraunces",serif;font-weight:600;color:var(--rock);}
+
+/* class cards */
+.class-block{
+  border-left:3px solid var(--rock);
+  padding:2px 0 2px 16px;
+  margin:0 0 14px;
+}
+.class-block h3{
+  color:var(--pine);margin:0 0 4px;font-family:"Fraunces",serif;
+  text-transform:none;letter-spacing:0;font-size:18px;font-weight:600;
+}
+.class-block h3 .s{
+  font-family:"Archivo Narrow",sans-serif;font-size:12px;
+  color:var(--rock);letter-spacing:.1em;text-transform:uppercase;
+  margin-left:8px;font-weight:700;vertical-align:middle;
+}
+
+.note{
+  font-style:italic;color:var(--stone);font-size:13.5px;
+  border-top:1px solid var(--line-soft);padding-top:8px;margin-top:4px;
+}
+
+.formula{
+  text-align:center;
+  font-family:"Fraunces",serif;font-weight:600;font-size:19px;
+  color:var(--pine);
+  background:var(--snow-panel);border:1px solid var(--line);
+  border-radius:4px;padding:14px;margin:12px 0;
+}
+
+.win-lose{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;}
+.wl{border:1.5px solid var(--line);border-radius:4px;padding:14px 16px;}
+.wl.win{border-color:var(--c-green);}
+.wl.lose{border-color:var(--c-red);}
+.wl h3{margin-top:0;}
+.wl.win h3{color:var(--c-green);}
+.wl.lose h3{color:var(--c-red);}
+
+footer.colophon{
+  margin-top:48px;border-top:1px solid var(--line);
+  padding-top:16px;text-align:center;
+  font-family:"Archivo Narrow",sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;font-size:11px;color:var(--stone);
+}
+footer.colophon .version{color:var(--rock);}
+
+/* ---------- MOBILE / RESPONSIVE ---------- */
+@media (max-width:640px){
+  .sheet{padding:30px 20px 60px;}
+  .cover{padding:36px 0 28px;margin-bottom:32px;}
+  .peak-mark{width:76px;height:76px;}
+  .title{font-size:clamp(42px,15vw,64px);}
+  .subtitle{letter-spacing:.26em;text-indent:.26em;font-size:12px;}
+  .tagline{font-size:17px;}
+  .meta{flex-wrap:wrap;justify-content:center;}
+  h2.sec-title{font-size:22px;}
+  .cube-key{grid-template-columns:1fr;gap:0;}
+  .win-lose{grid-template-columns:1fr;}
+  .formula{font-size:16px;padding:12px 10px;}
+  /* wide tables scroll inside their wrapper instead of pushing the page sideways */
+  .cls-name{white-space:normal;}
+  table{font-size:12.5px;min-width:24rem;}
+  thead th,tbody td{padding:7px 8px;}
+}
+
+@media (max-width:380px){
+  .sheet{padding:24px 15px 48px;}
+  .subtitle{letter-spacing:.18em;text-indent:.18em;}
+}
+
+/* ---------- PRINT: A4 with safe margins ---------- */
+@page{
+  size:A4;
+  /* generous margins keep content inside the non-printable edge of most printers */
+  margin:15mm 14mm 16mm;
+}
+@media print{
+  html,body{background:#fff;}
+  body{font-size:10.5pt;line-height:1.5;}
+  .sheet{max-width:none;margin:0;padding:0;}
+  a{color:inherit;text-decoration:none;}
+
+  /* honour the coloured cube fills when printing */
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  .table-wrap{overflow:visible;}
+  table{min-width:0;}
+
+  .cover{padding:10mm 0 6mm;margin-bottom:8mm;page-break-after:always;}
+  .title{font-size:52pt;}
+
+  /* keep atomic units together, but let big sections flow across pages */
+  .class-block,.keystone,.win-lose,.formula{page-break-inside:avoid;}
+  table{page-break-inside:auto;}
+  tr,img{page-break-inside:avoid;}
+  .cube-row{page-break-inside:avoid;}
+  .sec-head{page-break-after:avoid;}
+  h3{page-break-after:avoid;}
+  thead{display:table-header-group;}
+
+  footer.colophon{page-break-before:avoid;}
+}

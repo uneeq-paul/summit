@@ -12,20 +12,24 @@ All game files live here. When something changes, it changes here first.
 
 ```
 rules/
-  index.html   The rulebook, formatted for screen and A4 print
+  index.html    The rulebook — the rules content (source of truth)
+  rulebook.css  All styling: screen, mobile, and A4 print
 design/
-  README.md    Designer-only notes: parked ideas + playtest questions
-serve.sh       Serve the rulebook locally and open it in Chrome to view / print
+  README.md     Designer-only notes: parked ideas + playtest questions
+serve.sh        Serve the rulebook locally and open it in Chrome to view / print
 ```
 
 ## The rulebook
 
 `rules/index.html` is the rulebook — the single source of truth for the rules.
-Open it in any browser to read them. It is styled like a printed board-game
-manual and is set up to print cleanly on **A4** — the page margins stay inside
-the non-printable edge that most home printers leave, so nothing gets clipped.
-To print, use your browser's Print dialog (choose A4; the cube colours are set
-to print without needing "Background graphics").
+It holds just the rules content; all styling lives in `rules/rulebook.css`, so
+the HTML stays clean and easy to edit.
+
+Open `index.html` in any browser to read it. The page is **mobile-responsive**
+and styled like a printed board-game manual, and it prints cleanly on **A4** —
+the margins stay inside the non-printable edge that most home printers leave, so
+nothing gets clipped. To print, use your browser's Print dialog (choose A4; the
+cube colours are set to print without needing "Background graphics").
 
 ## Viewing & printing
 
@@ -45,8 +49,9 @@ If you use Claude Code in this repo, the `/preview-rulebook` skill
 
 ## Editing the rules
 
-Both files are edited directly — no build step. Edit the rulebook in
-`rules/index.html`, and the design notes in `design/README.md`.
+Everything is edited directly — no build step. Edit the rules in
+`rules/index.html`, the styling in `rules/rulebook.css`, and the design notes in
+`design/README.md`.
 
 ## Status
 
