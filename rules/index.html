@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit — Rulebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b2a24;          /* deep pine text */
+    --pine:#20493b;         /* headers */
+    --pine-deep:#153229;
+    --moss:#5a7a5c;
+    --stone:#6b6157;        /* muted brown-grey */
+    --rock:#8a6a3b;         /* trail brown accent */
+    --snow:#f7f5ef;         /* page */
+    --snow-panel:#efeadd;   /* panels */
+    --line:#cdc6b5;
+    --line-soft:#e0d9c8;
+
+    /* cube colours — the game's core system */
+    --c-green:#3f8f5b;
+    --c-yellow:#d6a627;
+    --c-red:#b6402e;
+    --c-purple:#7a4ea3;
+    --c-brown:#8a6a3b;
+    --c-blue:#3a6ea5;
+
+    --maxw:820px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(120% 80% at 50% -10%, #ffffff 0%, var(--snow) 55%) fixed,
+      var(--snow);
+    color:var(--ink);
+    font-family:"Archivo",system-ui,sans-serif;
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .sheet{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:48px 40px 80px;
+  }
+
+  /* ---------- COVER ---------- */
+  .cover{
+    text-align:center;
+    padding:64px 0 40px;
+    border-bottom:2px solid var(--pine);
+    margin-bottom:40px;
+    position:relative;
+  }
+  .peak-mark{
+    width:96px;height:96px;margin:0 auto 20px;display:block;
+  }
+  .title{
+    font-family:"Fraunces",serif;
+    font-weight:900;
+    font-size:76px;
+    letter-spacing:.06em;
+    line-height:.9;
+    color:var(--pine);
+    margin:0;
+    text-indent:.06em;
+  }
+  .subtitle{
+    font-family:"Archivo Narrow",sans-serif;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.42em;
+    font-size:14px;
+    color:var(--rock);
+    margin:18px 0 0;
+    text-indent:.42em;
+  }
+  .tagline{
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-size:19px;
+    color:var(--stone);
+    margin:14px 0 0;
+  }
+  .meta{
+    margin:26px auto 0;
+    display:inline-flex;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    font-family:"Archivo Narrow",sans-serif;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .meta span{padding:9px 18px;color:var(--pine-deep);}
+  .meta span + span{border-left:1px solid var(--line);}
+
+  /* ---------- SECTION SYSTEM ---------- */
+  section{margin:0 0 34px;}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    border-bottom:1.5px solid var(--pine);
+    padding-bottom:7px;
+    margin:0 0 16px;
+  }
+  .sec-num{
+    font-family:"Fraunces",serif;
+    font-weight:900;
+    font-size:22px;
+    color:var(--rock);
+    min-width:1.4em;
+    line-height:1;
+  }
+  h2.sec-title{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:25px;
+    color:var(--pine);
+    margin:0;
+    line-height:1.1;
+  }
+  h3{
+    font-family:"Archivo Narrow",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.13em;
+    font-weight:700;
+    font-size:14px;
+    color:var(--rock);
+    margin:22px 0 8px;
+  }
+  p{margin:0 0 12px;}
+  strong{color:var(--pine-deep);font-weight:700;}
+  .lead{font-size:16px;}
+
+  /* callout: the single most important rule */
+  .keystone{
+    background:var(--pine);
+    color:#f3efe4;
+    border-radius:4px;
+    padding:20px 24px;
+    margin:16px 0;
+  }
+  .keystone h3{color:#e7c98a;margin-top:0;}
+  .keystone strong{color:#fff;}
+  .keystone p:last-child{margin-bottom:0;}
+
+  /* ---------- CUBE KEY (signature element) ---------- */
+  .cube-key{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px 22px;
+    margin:14px 0 4px;
+  }
+  .cube-row{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:8px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .cube{
+    flex:0 0 auto;
+    width:22px;height:22px;
+    border-radius:4px;
+    margin-top:2px;
+    box-shadow:inset 0 -3px 0 rgba(0,0,0,.18), inset 0 2px 0 rgba(255,255,255,.28);
+  }
+  .cube-green{background:var(--c-green);}
+  .cube-yellow{background:var(--c-yellow);}
+  .cube-red{background:var(--c-red);}
+  .cube-purple{background:var(--c-purple);}
+  .cube-brown{background:var(--c-brown);}
+  .cube-blue{background:var(--c-blue);}
+  .cube-label{font-weight:700;color:var(--pine-deep);}
+  .cube-row small{display:block;color:var(--stone);font-weight:400;line-height:1.45;}
+
+  /* inline coloured cube token */
+  .tok{
+    display:inline-block;width:11px;height:11px;border-radius:2px;
+    vertical-align:baseline;margin:0 1px;
+    box-shadow:inset 0 -2px 0 rgba(0,0,0,.18);
+  }
+
+  /* ---------- LISTS ---------- */
+  ol.steps{margin:0 0 12px;padding:0;counter-reset:step;list-style:none;}
+  ol.steps li{
+    position:relative;padding:0 0 10px 40px;margin:0;
+  }
+  ol.steps li::before{
+    counter-increment:step;content:counter(step);
+    position:absolute;left:0;top:-1px;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--snow-panel);border:1.5px solid var(--pine);
+    color:var(--pine);font-family:"Fraunces",serif;font-weight:600;
+    font-size:14px;display:flex;align-items:center;justify-content:center;
+  }
+  ul.ticks{margin:0 0 12px;padding:0;list-style:none;}
+  ul.ticks li{position:relative;padding:0 0 8px 22px;}
+  ul.ticks li::before{
+    content:"";position:absolute;left:2px;top:9px;
+    width:7px;height:7px;background:var(--rock);
+    transform:rotate(45deg);
+  }
+
+  /* ---------- TABLES ---------- */
+  table{
+    width:100%;border-collapse:collapse;margin:8px 0 14px;
+    font-size:13.5px;
+  }
+  caption{
+    text-align:left;font-family:"Archivo Narrow",sans-serif;
+    font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    font-size:12.5px;color:var(--rock);padding-bottom:6px;
+  }
+  thead th{
+    background:var(--pine);color:#f3efe4;
+    font-family:"Archivo Narrow",sans-serif;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;font-size:12px;
+    text-align:left;padding:8px 10px;
+  }
+  tbody td{padding:8px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+  tbody tr:nth-child(even){background:rgba(0,0,0,.022);}
+  td.c,th.c{text-align:center;}
+  .cls-name{font-weight:700;color:var(--pine-deep);white-space:nowrap;}
+  .stat{font-family:"Fraunces",serif;font-weight:600;color:var(--rock);}
+
+  /* class cards */
+  .class-block{
+    border-left:3px solid var(--rock);
+    padding:2px 0 2px 16px;
+    margin:0 0 14px;
+  }
+  .class-block h3{
+    color:var(--pine);margin:0 0 4px;font-family:"Fraunces",serif;
+    text-transform:none;letter-spacing:0;font-size:18px;font-weight:600;
+  }
+  .class-block h3 .s{
+    font-family:"Archivo Narrow",sans-serif;font-size:12px;
+    color:var(--rock);letter-spacing:.1em;text-transform:uppercase;
+    margin-left:8px;font-weight:700;vertical-align:middle;
+  }
+
+  .note{
+    font-style:italic;color:var(--stone);font-size:13.5px;
+    border-top:1px solid var(--line-soft);padding-top:8px;margin-top:4px;
+  }
+
+  .formula{
+    text-align:center;
+    font-family:"Fraunces",serif;font-weight:600;font-size:19px;
+    color:var(--pine);
+    background:var(--snow-panel);border:1px solid var(--line);
+    border-radius:4px;padding:14px;margin:12px 0;
+  }
+
+  .win-lose{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;}
+  .wl{border:1.5px solid var(--line);border-radius:4px;padding:14px 16px;}
+  .wl.win{border-color:var(--c-green);}
+  .wl.lose{border-color:var(--c-red);}
+  .wl h3{margin-top:0;}
+  .wl.win h3{color:var(--c-green);}
+  .wl.lose h3{color:var(--c-red);}
+
+  footer.colophon{
+    margin-top:48px;border-top:1px solid var(--line);
+    padding-top:16px;text-align:center;
+    font-family:"Archivo Narrow",sans-serif;letter-spacing:.14em;
+    text-transform:uppercase;font-size:11px;color:var(--stone);
+  }
+
+  /* ---------- PRINT: A4 with safe margins ---------- */
+  @page{
+    size:A4;
+    /* generous margins keep content inside the non-printable edge of most printers */
+    margin:15mm 14mm 16mm;
+  }
+  @media print{
+    html,body{background:#fff;}
+    body{font-size:10.5pt;line-height:1.5;}
+    .sheet{max-width:none;margin:0;padding:0;}
+    a{color:inherit;text-decoration:none;}
+
+    /* honour the coloured cube fills when printing */
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+    .cover{padding:10mm 0 6mm;margin-bottom:8mm;page-break-after:always;}
+    .title{font-size:52pt;}
+
+    /* keep atomic units together, but let big sections flow across pages */
+    .class-block,.keystone,.win-lose,.formula{page-break-inside:avoid;}
+    table{page-break-inside:auto;}
+    tr,img{page-break-inside:avoid;}
+    .cube-row{page-break-inside:avoid;}
+    .sec-head{page-break-after:avoid;}
+    h3{page-break-after:avoid;}
+    thead{display:table-header-group;}
+
+    footer.colophon{page-break-before:avoid;}
+  }
+
+  @media (max-width:640px){
+    .sheet{padding:28px 20px 56px;}
+    .title{font-size:52px;}
+    .cube-key{grid-template-columns:1fr;}
+    .win-lose{grid-template-columns:1fr;}
+    .meta{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <!-- COVER -->
+  <header class="cover">
+    <svg class="peak-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M50 8 L92 88 H8 Z" fill="#20493b"/>
+      <path d="M50 8 L66 38 L58 44 L50 33 L42 46 L34 39 Z" fill="#f7f5ef"/>
+      <path d="M8 88 L34 39 L42 46 L28 88 Z" fill="#153229" opacity=".55"/>
+      <circle cx="50" cy="8" r="0" />
+    </svg>
+    <h1 class="title">SUMMIT</h1>
+    <p class="subtitle">A Cooperative Climbing Game</p>
+    <p class="tagline">Reach the summit together</p>
+    <div class="meta">
+      <span>2–4 Players</span>
+      <span>Ages 8+</span>
+      <span>45–60 Min</span>
+    </div>
+  </header>
+
+  <!-- 1 OVERVIEW -->
+  <section>
+    <div class="sec-head"><span class="sec-num">1</span><h2 class="sec-title">Overview</h2></div>
+    <p class="lead"><strong>Summit</strong> is a fully cooperative game about a team of climbers ascending a mountain together. You win — or lose — as a group. The mountain is revealed one step at a time, and the higher you go, the hungrier, colder, and more exhausted your climbers become. The core tension is simple: everything that goes wrong takes up space where your climbing strength should be.</p>
+    <p><strong>Goal:</strong> Get your team from the starting hex to the summit, <strong>20 hexes away</strong>, before your climbers are worn down completely.</p>
+  </section>
+
+  <!-- 2 CUBES -->
+  <section>
+    <div class="sec-head"><span class="sec-num">2</span><h2 class="sec-title">The Core Idea: Your Cubes</h2></div>
+    <p>This is the most important rule in the game — read it first. <strong>Every player holds a fixed number of cubes for the whole game</strong> (for example, 18). You never gain or lose cubes from your hand. Instead, your cubes <strong>change colour</strong> by swapping them at the shared <strong>pool</strong> in the middle of the table.</p>
+
+    <div class="cube-key" role="list">
+      <div class="cube-row" role="listitem"><span class="cube cube-green"></span><div><span class="cube-label">Green — Stamina</span><small>Your usable strength. This is what lets you climb. You start with all green.</small></div></div>
+      <div class="cube-row" role="listitem"><span class="cube cube-yellow"></span><div><span class="cube-label">Yellow — Hunger</span><small>Gained every turn. Removed by eating food.</small></div></div>
+      <div class="cube-row" role="listitem"><span class="cube cube-red"></span><div><span class="cube-label">Red — Damage</span><small>Gained by failing climbs. Removed by healing, bandages, first aid.</small></div></div>
+      <div class="cube-row" role="listitem"><span class="cube cube-purple"></span><div><span class="cube-label">Purple — Poison</span><small>Gained from mushrooms. One wears off on its own each turn.</small></div></div>
+      <div class="cube-row" role="listitem"><span class="cube cube-brown"></span><div><span class="cube-label">Brown — Weight</span><small>Items you carry, or a teammate you're carrying. Returned when you set them down.</small></div></div>
+      <div class="cube-row" role="listitem"><span class="cube cube-blue"></span><div><span class="cube-label">Blue — Cold</span><small>Hard mode only. Gained when alone; removed by teammates and warmth.</small></div></div>
+    </div>
+
+    <div class="keystone">
+      <h3>The key principle</h3>
+      <p>Your total cubes never change. When you gain hunger, damage, poison, weight or cold, you hand <strong>green</strong> cubes to the pool and take the coloured cubes in exchange. When you recover, you hand the coloured cubes back and take <strong>green</strong>. So “losing stamina” always means having fewer of your cubes showing green.</p>
+    </div>
+    <p>There is exactly one item — <strong>Climbing Boots</strong> — that permanently raises your total (see Items &amp; Cards).</p>
+  </section>
+
+  <!-- 3 SETUP -->
+  <section>
+    <div class="sec-head"><span class="sec-num">3</span><h2 class="sec-title">Setup</h2></div>
+    <ol class="steps">
+      <li>Place the starting hex in the middle of the table. All players begin standing on it.</li>
+      <li>Reveal the hexes surrounding the starting hex. Each hex edge shows a number from 1 to 20.</li>
+      <li>Each player chooses a character class (or deal them randomly). Take your starting stamina as that many <span class="tok cube-green"></span> green cubes.</li>
+      <li>Place all other cubes in the pool in the middle of the table.</li>
+      <li>Each player draws one card from the deck to start with.</li>
+    </ol>
+  </section>
+
+  <!-- 4 CLASSES -->
+  <section>
+    <div class="sec-head"><span class="sec-num">4</span><h2 class="sec-title">Character Classes</h2></div>
+    <p>Each class trades stamina, strength, luck, and support differently. Pick one each (or deal them at random). The Climber is the baseline; every other class is a variation on it.</p>
+
+    <table>
+      <caption>Class roster at a glance</caption>
+      <thead><tr><th>Class</th><th class="c">Stamina</th><th>Identity in one line</th></tr></thead>
+      <tbody>
+        <tr><td class="cls-name">The Agile</td><td class="c stat">20</td><td>The pure climber and scout — nimble, high stamina, ranges ahead.</td></tr>
+        <tr><td class="cls-name">The Climber</td><td class="c stat">18</td><td>The baseline — no special effects. Every other class is measured against it.</td></tr>
+        <tr><td class="cls-name">The Healer</td><td class="c stat">16</td><td>Removes damage from any player, including itself.</td></tr>
+        <tr><td class="cls-name">The Cook</td><td class="c stat">16</td><td>Doubles the hunger removed from food fed to a teammate.</td></tr>
+        <tr><td class="cls-name">The Strong</td><td class="c stat">16</td><td>The gear mule — carries items and fallen teammates cheaply.</td></tr>
+        <tr><td class="cls-name">The Gambler</td><td class="c stat">14</td><td>High variance — doubles the climb roll, but falls twice as hard.</td></tr>
+        <tr><td class="cls-name">The Android</td><td class="c stat">14</td><td>A tireless machine — immune to hunger and damage, but never rolls.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">The Climber (18) is the baseline. Specialist classes have a little less stamina, which pays for their special ability; the Agile has more, but carries gear at double weight.</p>
+
+    <div class="class-block">
+      <h3>The Climber <span class="s">18 stamina · baseline</span></h3>
+      <p>The plain, no-frills character and the reference point for the whole roster: normal stamina, normal item weight, rolls the die normally, no special ability. The best choice for a new player, and the yardstick every other class is defined against.</p>
+    </div>
+    <div class="class-block">
+      <h3>The Agile <span class="s">20 stamina</span></h3>
+      <p>The nimble climber and natural scout. Highest stamina in the game, but not strong: <strong>items weigh double</strong> for the Agile. Its one great gift is speed — the Agile <strong>may move to two hexes in a single turn</strong>, where every other class is limited to one. Each of those climbs is a separate check with its own die roll and its own risk of damage, so ranging ahead is powerful but never free.</p>
+    </div>
+    <div class="class-block">
+      <h3>The Healer <span class="s">16 stamina</span></h3>
+      <p>At the start of the turn, the Healer rolls the die and removes that much <strong>damage</strong> (<span class="tok cube-red"></span> red) from one player — itself or a teammate. <strong>Healing removes damage only, never hunger.</strong> Any heal beyond a player's current damage is wasted. Invaluable after a rough climb, near-idle when the team is climbing cleanly.</p>
+    </div>
+    <div class="class-block">
+      <h3>The Cook <span class="s">16 stamina</span></h3>
+      <p>Once per turn, the Cook may feed a food card to a <strong>teammate on the same hex</strong> and double its hunger removal (an apple removes 4 instead of 2). The double applies only to food given to others, not the Cook's own eating — so the Cook must stay close to the group to shine.</p>
+    </div>
+    <div class="class-block">
+      <h3>The Strong <span class="s">16 stamina</span></h3>
+      <p>Powerful but tires fast. <strong>Items weigh half</strong> (rounded down) for the Strong, making it the team's gear mule. It also <strong>carries fallen teammates cheaply</strong> and <strong>keeps a rope after using it</strong> instead of losing it. Its lower stamina is the price of all that strength.</p>
+    </div>
+    <div class="class-block">
+      <h3>The Gambler <span class="s">14 stamina</span></h3>
+      <p>The Gambler rolls the die once, like everyone else, then <strong>doubles that number</strong> for the climb (a 6 counts as +12). But the same roll cuts both ways: on a <strong>failed climb it takes double damage</strong> (fall short by 3, take 6 damage). Its low stamina forces it to lean on the dice — which is the whole point of the character.</p>
+    </div>
+    <div class="class-block">
+      <h3>The Android <span class="s">14 stamina</span></h3>
+      <p>The Android is a machine, so it <strong>never gets hungry and never takes damage</strong> — it never holds <span class="tok cube-yellow"></span> yellow or <span class="tok cube-red"></span> red cubes, and it <strong>cannot be healed</strong>. In exchange, it <strong>never rolls the die on climbs</strong>: it climbs on stamina + buddy bonus + tools only. This caps its climb total at 20 even with full team support, so it can never gamble its way up a hard pitch alone.</p>
+      <ul class="ticks">
+        <li><strong>Carrying.</strong> The Android carries fallen teammates at half cost (like the Strong). It does <em>not</em> get the Strong's half-weight discount on items — keeping the two distinct (Android hauls people; Strong hauls gear).</li>
+        <li><strong>Hard-mode fragility.</strong> The Android still gets cold. If it ever reaches <strong>6 blue cubes it freezes permanently</strong> and is out of the game. It can only remove blue via teammates or a wool blanket — so it must not be abandoned in the cold.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5 MOUNTAIN -->
+  <section>
+    <div class="sec-head"><span class="sec-num">5</span><h2 class="sec-title">The Mountain &amp; Movement</h2></div>
+    <h3>Hexes and climbing requirements</h3>
+    <p>The mountain is built from hexes. Each edge of a hex shows a number from 1 to 20. To move from your current hex to an adjacent one, add together the <strong>two edges that touch</strong> — the edge on your hex and the edge on the hex you're moving to. That sum is the <strong>climbing requirement</strong>.</p>
+    <p class="note">Example: your hex's edge shows 3, and the adjacent hex's touching edge shows 5. The climbing requirement is 3 + 5 = 8.</p>
+    <h3>Revealing the mountain</h3>
+    <p>When you move onto a hex for the first time, reveal the hexes around it. The mountain unfolds as you explore.</p>
+    <h3>Movement rules</h3>
+    <ul class="ticks">
+      <li><strong>One hex per turn.</strong> Each turn you may move to one new hex — except the Agile, who may move to two.</li>
+      <li><strong>Re-traversing.</strong> You may also move back across hexes you've already visited as many times as you like in a turn, as long as you meet each climbing requirement.</li>
+      <li><strong>Descending.</strong> You may climb back down to a visited hex for half the climbing requirement, rounded up.</li>
+    </ul>
+    <p class="note">“New to you” is personal — a hex counts as new even if a teammate has already been there.</p>
+  </section>
+
+  <!-- 6 TURN -->
+  <section>
+    <div class="sec-head"><span class="sec-num">6</span><h2 class="sec-title">The Turn</h2></div>
+    <p><strong>All players take their turns simultaneously.</strong> Each turn, resolve these steps in order:</p>
+    <ol class="steps">
+      <li><strong>Get hungry.</strong> Every player hands 1 <span class="tok cube-green"></span> green cube to the pool and takes 1 <span class="tok cube-yellow"></span> yellow cube. This happens every turn, unavoidably.</li>
+      <li><strong>Passive effects.</strong> Remove 1 <span class="tok cube-purple"></span> purple (poison) cube if you have any. In hard mode, resolve cold.</li>
+      <li><strong>Healer heals.</strong> The Healer rolls the die and removes that much damage from one player — itself or a teammate. Damage only; never hunger.</li>
+      <li><strong>Climb / act.</strong> Attempt climbs, use items, trade items, and move.</li>
+    </ol>
+    <p class="note">A specialist action (the Healer's heal or the Cook's cooking) does not use up your turn — you may perform it and still climb and move in the same turn.</p>
+  </section>
+
+  <!-- 7 CLIMBING -->
+  <section>
+    <div class="sec-head"><span class="sec-num">7</span><h2 class="sec-title">Climbing — the Skill Check</h2></div>
+    <p>To attempt a climb, compare your available stamina against the climbing requirement. <strong>You do not spend your cubes to climb</strong> — you simply need to reach the requirement. Your climb total is:</p>
+    <div class="formula">Green stamina&nbsp; +&nbsp; die roll&nbsp; +&nbsp; buddy bonuses&nbsp; +&nbsp; item bonuses</div>
+    <ul class="ticks">
+      <li><strong>Die roll.</strong> Every climb, roll the die and add it to your total for that climb only. No cubes are exchanged for the roll.</li>
+      <li><strong>Buddy bonus.</strong> +3 if a teammate is at the base of the climb (they lift you up), +3 if a teammate is at the top (they pull you up). Maximum +6. No cubes exchanged.</li>
+    </ul>
+    <p><strong>Success:</strong> if your total meets or exceeds the requirement, you make the climb and move to the new hex.</p>
+    <p><strong>Failure:</strong> if you fall short, you stay on your current hex and take <span class="tok cube-red"></span> red damage equal to the amount you missed by.</p>
+    <p class="note">The die roll makes every climb a gamble: a hard climb might just be reachable on a 6, but a low roll means damage. A tough climb can still be worth attempting if you're willing to risk it.</p>
+  </section>
+
+  <!-- 8 PASSING OUT -->
+  <section>
+    <div class="sec-head"><span class="sec-num">8</span><h2 class="sec-title">Passing Out &amp; Carrying</h2></div>
+    <p><strong>Passing out:</strong> if a player reaches 0 stamina (no green cubes), they pass out and cannot act.</p>
+    <p><strong>Carrying:</strong> another player may carry a passed-out teammate. The carrier takes <strong>12 <span class="tok cube-brown"></span> brown (weight) cubes</strong> — the Strong and Android take only 6 — swapping that much of their own green stamina away for as long as they carry. This works like a very heavy item: carrying a teammate makes your own climbs much harder. When you set them down, return the brown cubes for green.</p>
+  </section>
+
+  <!-- 9 ITEMS -->
+  <section>
+    <div class="sec-head"><span class="sec-num">9</span><h2 class="sec-title">Items &amp; Cards</h2></div>
+    <h3>Drawing cards</h3>
+    <ul class="ticks">
+      <li><strong>Draw on arrival.</strong> Every time you move onto a hex that is new to you, draw one card. No roll needed.</li>
+      <li><strong>Inventory limit.</strong> You may hold at most 3 items at a time.</li>
+      <li><strong>Trading.</strong> While on the same hex as a teammate, you may hand items to each other freely.</li>
+    </ul>
+    <h3>Weight</h3>
+    <p>Items with a weight cost you stamina to carry. When you pick up an item, take <span class="tok cube-brown"></span> brown cubes equal to its weight in exchange for green. Weight is modified by class: <strong>doubled</strong> for the Agile, <strong>halved and rounded down</strong> for the Strong. Weight returns to green when you discard or give away the item.</p>
+
+    <table>
+      <caption>Food — removes hunger (single use, then discard)</caption>
+      <thead><tr><th>Item</th><th class="c">Weight</th><th>Effect</th><th class="c">In deck</th></tr></thead>
+      <tbody>
+        <tr><td class="cls-name">Apple</td><td class="c">1</td><td>Remove 2 hunger</td><td class="c">10</td></tr>
+        <tr><td class="cls-name">Trail Mix</td><td class="c">1</td><td>Remove 2 hunger</td><td class="c">10</td></tr>
+        <tr><td class="cls-name">Coconut</td><td class="c">5</td><td>Remove 5 hunger</td><td class="c">10</td></tr>
+        <tr><td class="cls-name">Lollipop</td><td class="c">0</td><td>Remove 1 hunger; +10 stamina for this turn only</td><td class="c">3</td></tr>
+        <tr><td class="cls-name">Poisonous Mushroom</td><td class="c">0</td><td>Roll the die: take that much poison <em>and</em> remove that much hunger</td><td class="c">5</td></tr>
+      </tbody>
+    </table>
+
+    <table>
+      <caption>Tools &amp; gear</caption>
+      <thead><tr><th>Item</th><th class="c">Weight</th><th>Effect</th><th class="c">In deck</th></tr></thead>
+      <tbody>
+        <tr><td class="cls-name">Rope</td><td class="c">2</td><td>A player higher up lets all players below climb free of stamina. Used up afterward (the Strong keeps it instead).</td><td class="c">2</td></tr>
+        <tr><td class="cls-name">Rope Gun</td><td class="c">3</td><td>Everyone on your hex picks one target hex and gets +12 stamina for that climb. Consumed after use.</td><td class="c">2</td></tr>
+        <tr><td class="cls-name">Mushroom Shelf</td><td class="c">2</td><td>When used to move hex-to-hex, all players get double stamina for that climb. Consumed that turn.</td><td class="c">2</td></tr>
+        <tr><td class="cls-name">Chalk Bag</td><td class="c">0</td><td>Re-roll one failed climb die. Single use, then discard.</td><td class="c">4</td></tr>
+        <tr><td class="cls-name">Piton</td><td class="c">1</td><td>On a failed climb, stay put and take no damage. Single use.</td><td class="c">3</td></tr>
+        <tr><td class="cls-name">Bandage</td><td class="c">1</td><td>Remove 2 damage. Single use.</td><td class="c">3</td></tr>
+        <tr><td class="cls-name">First Aid Kit</td><td class="c">2</td><td>Remove up to 4 damage. Single use.</td><td class="c">2</td></tr>
+        <tr><td class="cls-name">Wool Blanket</td><td class="c">2</td><td>Remove 2 cold. Single use.</td><td class="c">2</td></tr>
+        <tr><td class="cls-name">Climbing Boots</td><td class="c">0</td><td>Permanently increase your total stamina by 2, then discard.</td><td class="c">1</td></tr>
+        <tr><td class="cls-name">Rockfall</td><td class="c">0</td><td>Bad draw: all players on your hex take 2 damage, then discard.</td><td class="c">4</td></tr>
+        <tr><td class="cls-name">Nothing</td><td class="c">0</td><td>You find nothing. No effect.</td><td class="c">10</td></tr>
+      </tbody>
+    </table>
+    <p class="note">The deck contains 73 cards in total.</p>
+  </section>
+
+  <!-- 10 HARD MODE -->
+  <section>
+    <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title">Hard Mode: Cold</h2></div>
+    <p><strong><span class="tok cube-blue"></span> Blue cubes = cold.</strong> Hard mode adds a pressure that rewards staying together.</p>
+    <ul class="ticks">
+      <li><strong>Alone gets cold.</strong> At the start of your turn, if you are on a hex by yourself, take 1 blue cube. It stays until you can warm up.</li>
+      <li><strong>Company warms you.</strong> At the start of your turn, if you share a hex with a teammate, remove 1 blue cube.</li>
+      <li><strong>Wool Blanket</strong> removes 2 blue when used.</li>
+      <li><strong>Android shutdown.</strong> If the Android ever reaches 6 blue cubes, it freezes permanently and is out of the game.</li>
+    </ul>
+  </section>
+
+  <!-- 11 HANDICAP -->
+  <section>
+    <div class="sec-head"><span class="sec-num">11</span><h2 class="sec-title">Optional Variant: Handicap</h2></div>
+    <p>For players who want an extra challenge, this optional variant lets anyone start the game weaker than normal. It can be used with or without hard mode, and each player decides for themselves — so players of different skill levels can share the same game.</p>
+    <p>When you take your starting stamina, you may <strong>give up as much of it as you like</strong>. For example, the Climber normally starts with 18 green cubes; a player using this variant might choose to start with 16, 14, or fewer. The cubes you give up go to the pool and are gone for the rest of the game.</p>
+    <ul class="ticks">
+      <li><strong>Keep at least 6.</strong> You must always start with at least 6 stamina, so a handicapped climber can still make a reasonable climb.</li>
+      <li><strong>Everyone chooses their own.</strong> Each player sets their own handicap independently.</li>
+    </ul>
+  </section>
+
+  <!-- 12 WIN/LOSE -->
+  <section>
+    <div class="sec-head"><span class="sec-num">12</span><h2 class="sec-title">Winning &amp; Losing</h2></div>
+    <div class="win-lose">
+      <div class="wl win">
+        <h3>You win</h3>
+        <p>When the team reaches the summit, 20 hexes from the start.</p>
+        <p style="margin-bottom:0"><strong>Going alone:</strong> a lone survivor can still win by reaching the summit — the team may finish with a single climber.</p>
+      </div>
+      <div class="wl lose">
+        <h3>You lose</h3>
+        <p style="margin-bottom:0">If all players are passed out at the same time, with no one left to carry the fallen.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    Summit · Cooperative Climbing Game · Rulebook
+  </footer>
+
+</main>
+</body>
+</html>

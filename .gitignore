@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+
+# Local tooling / npm-generated (build uses a plain `npm install docx`)
+.claude/
+source/package.json
+source/package-lock.json
